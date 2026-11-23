@@ -36,12 +36,12 @@ resource "azurerm_cdn_frontdoor_firewall_policy" "this" {
       dynamic "match_condition" {
         for_each = custom_rule.value.match_conditions
         content {
-          match_variable   = match_condition.value.match_variable
-          match_values     = match_condition.value.match_values
-          operator         = match_condition.value.operator
-          selector         = match_condition.value.selector
+          match_variable = match_condition.value.match_variable
+          match_values   = match_condition.value.match_values
+          operator       = match_condition.value.operator
+          selector       = match_condition.value.selector
           # negate_condition deprecated in azurerm 4.x
-          transforms       = match_condition.value.transforms
+          transforms = match_condition.value.transforms
         }
       }
     }
@@ -340,10 +340,10 @@ resource "azurerm_cdn_frontdoor_rule" "this" {
       dynamic "post_args_condition" {
         for_each = conditions.value.post_args != null ? conditions.value.post_args : []
         content {
-          post_args_name   = post_args_condition.value.post_args_name
-          operator         = post_args_condition.value.operator
-          match_values     = post_args_condition.value.match_values
-          transforms       = post_args_condition.value.transforms
+          post_args_name = post_args_condition.value.post_args_name
+          operator       = post_args_condition.value.operator
+          match_values   = post_args_condition.value.match_values
+          transforms     = post_args_condition.value.transforms
         }
       }
 
